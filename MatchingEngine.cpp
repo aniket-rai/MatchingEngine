@@ -2,8 +2,13 @@
 
 int main() {
     auto engine = Engine("AAPL");
-    auto order = Order("AAPL", 712.12, OrderType::Bid);
 
-    engine.addOrder(order);
+    engine.addOrder(Order("AAPL", 712.12, OrderType::Bid));
+    engine.addOrder(Order("AAPL", 712.13, OrderType::Bid));
+
+    engine.addOrder(Order("AAPL", 711.12, OrderType::Ask));
+    engine.addOrder(Order("AAPL", 711.13, OrderType::Ask));
+    engine.getPair();
+
     return 0;
 }

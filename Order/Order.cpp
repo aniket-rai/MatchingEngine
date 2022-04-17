@@ -50,6 +50,10 @@ double Order::getValue() {
     return this->_value;
 }
 
+OrderType Order::getType() {
+    return this->_type;
+}
+
 bool Order::operator<(Order& order) {
     if (this->_value == order.getValue()) {
         return this->_id < order.getId();
@@ -82,6 +86,4 @@ bool Order::operator>(std::unique_ptr<Order> order) {
     }
 }
 
-Order::~Order() {
-    std::cout << "Deleted order with id: " << this->_id << ", ticker: " << this->_ticker << ", value: " << this->_value << ", type: " << this->_type << std::endl;
-}
+Order::~Order() {}

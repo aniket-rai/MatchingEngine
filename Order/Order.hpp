@@ -22,6 +22,7 @@ class Order {
     std::string getTicker();
     int getId();
     double getValue();
+    OrderType getType();
 
     private:
     int _id;
