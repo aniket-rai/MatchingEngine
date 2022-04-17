@@ -1,0 +1,5 @@
+.vscode/
+*.o
+*.gch
+.DS_Store
+MatchingEngine
