@@ -33,3 +33,5 @@ template <typename T>
 void Engine::deleteOrder(T&& orderId) {
 
 }
+template void Engine::deleteOrder<int>(int&& orderId);
+template void Engine::deleteOrder<int&>(int& orderId);

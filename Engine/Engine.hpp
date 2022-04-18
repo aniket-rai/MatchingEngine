@@ -5,8 +5,8 @@
 #include "../Order/Order.hpp"
 
 using order_ptr = std::unique_ptr<Order>;
-using engine_queue_asks = std::set<order_ptr, std::greater<order_ptr> >;
-using engine_queue_bids = std::set<order_ptr, std::less<order_ptr> >;
+using engine_queue_asks = std::set<order_ptr, std::less<order_ptr> >;
+using engine_queue_bids = std::set<order_ptr, std::greater<order_ptr> >;
 
 class Engine {
     public:
@@ -21,7 +21,6 @@ class Engine {
     void getBid();
     void getAsk();
     void getPair();
-
 
     private:
     std::string _ticker;

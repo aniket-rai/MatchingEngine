@@ -3,9 +3,10 @@
 int main() {
     auto engine = Engine("AAPL");
 
-    auto order = Order("AAPL", 711.12, 10, OrderType::Bid);
-    engine.addOrder(order);
-    engine.addOrder(Order("AAPL", 711.12, 10, OrderType::Bid));
+    engine.addOrder(Order("AAPL", 711, 10, OrderType::Bid));
+    engine.addOrder(Order("AAPL", 712, 10, OrderType::Bid));
+    engine.addOrder(Order("AAPL", 713, 10, OrderType::Ask));
+    engine.addOrder(Order("AAPL", 714, 10, OrderType::Ask));
 
     engine.getPair();
 
