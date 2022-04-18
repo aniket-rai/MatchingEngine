@@ -25,6 +25,8 @@ class Order {
     int getQuantity();
     OrderType getType();
 
+    void setQuantity(int newQuantity);
+
     private:
     int _id;
     std::string _ticker;

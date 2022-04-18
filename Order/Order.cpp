@@ -52,6 +52,10 @@ int Order::getQuantity() {
     return this->_quantity;
 }
 
+void Order::setQuantity(int quantity) {
+    this->_quantity = quantity;
+}
+
 OrderType Order::getType() {
     return this->_type;
 }

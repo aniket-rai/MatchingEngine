@@ -26,4 +26,7 @@ class Engine {
     std::string _ticker;
     engine_queue_bids _bids;
     engine_queue_asks _asks;
+
+    template <typename T>
+    bool matchOrder(T&& order);
 };
