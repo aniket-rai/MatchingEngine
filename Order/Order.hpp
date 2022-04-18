@@ -31,6 +31,7 @@ class Order {
     double _value;
     int _quantity;
     OrderType _type;
-    void copyConstructorHelper(Order& order);
-    void copyConstructorHelper(Order&& order);
+
+    template <typename T>
+    void copyConstructorHelper(T&& order);
 };

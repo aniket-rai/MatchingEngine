@@ -10,15 +10,8 @@ Order::Order(const std::string& ticker, const double& value, const int& quantity
     this->_type = type;
 }
 
-void Order::copyConstructorHelper(Order& order) {
-    this->_id = order._id;
-    this->_ticker = order._ticker;
-    this->_value = order._value;
-    this->_quantity = order._quantity;
-    this->_type = order._type;
-}
-
-void Order::copyConstructorHelper(Order&& order) {
+template <typename T>
+void Order::copyConstructorHelper(T&& order) {
     this->_id = order._id;
     this->_ticker = order._ticker;
     this->_value = order._value;
