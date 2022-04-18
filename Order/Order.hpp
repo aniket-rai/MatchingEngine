@@ -9,7 +9,7 @@ class Order {
     static int nextOrderId;
 
     public:
-    Order(const std::string& ticker, const double& value, const OrderType& type);
+    Order(const std::string& ticker, const double& value, const int& quantity, const OrderType& type);
     Order(Order& order);
     Order(Order&& order) noexcept;
     ~Order();
@@ -22,11 +22,15 @@ class Order {
     std::string getTicker();
     int getId();
     double getValue();
+    int getQuantity();
     OrderType getType();
 
     private:
     int _id;
     std::string _ticker;
     double _value;
+    int _quantity;
     OrderType _type;
+    void copyConstructorHelper(Order& order);
+    void copyConstructorHelper(Order&& order);
 };

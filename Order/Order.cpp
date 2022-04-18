@@ -2,29 +2,40 @@
 
 int Order::nextOrderId = 0;
 
-Order::Order(const std::string& ticker, const double& value, const OrderType& type) {
+Order::Order(const std::string& ticker, const double& value, const int& quantity, const OrderType& type) {
     this->_id = nextOrderId++;
     this->_ticker = ticker;
     this->_value = value;
+    this->_quantity = quantity;
     this->_type = type;
 }
 
-Order::Order(Order& order) {
+void Order::copyConstructorHelper(Order& order) {
     this->_id = order._id;
     this->_ticker = order._ticker;
     this->_value = order._value;
+    this->_quantity = order._quantity;
     this->_type = order._type;
 }
 
-Order::Order(Order&& order) noexcept {
+void Order::copyConstructorHelper(Order&& order) {
     this->_id = order._id;
     this->_ticker = order._ticker;
     this->_value = order._value;
+    this->_quantity = order._quantity;
     this->_type = order._type;
+}
 
+Order::Order(Order& order) {
+    this->copyConstructorHelper(order);
+}
+
+Order::Order(Order&& order) noexcept {
+    this->copyConstructorHelper(order);
     order._id = -1;
     order._ticker = "";
     order._value = -1;
+    order.quantity = -1;
     order._type = OrderType::None;
 }
 
@@ -48,6 +59,10 @@ int Order::getId() {
 
 double Order::getValue() {
     return this->_value;
+}
+
+int Order::getQuantity() {
+    return this->quantity;
 }
 
 OrderType Order::getType() {
