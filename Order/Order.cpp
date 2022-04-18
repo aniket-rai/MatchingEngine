@@ -35,7 +35,7 @@ Order::Order(Order&& order) noexcept {
     order._id = -1;
     order._ticker = "";
     order._value = -1;
-    order.quantity = -1;
+    order._quantity = -1;
     order._type = OrderType::None;
 }
 
@@ -62,7 +62,7 @@ double Order::getValue() {
 }
 
 int Order::getQuantity() {
-    return this->quantity;
+    return this->_quantity;
 }
 
 OrderType Order::getType() {
