@@ -1,14 +1,7 @@
 #include "Engine.hpp"
 
-void Engine::addOrder(Order& order) {
-    if (this->_ticker == order.getTicker()) {
-        _bids.push(std::make_unique<Order>(order));
-    } else {
-        std::cout << "WRONG TICKER inserted into " << this->_ticker << std::endl;
-    }
-}
-
-void Engine::addOrder(Order&& order) {
+template <typename T>
+void Engine::addOrder(T&& order) {
     if (this->_ticker == order.getTicker()) {
         if (order.getType() == OrderType::Bid) {
             _bids.push(std::make_unique<Order>(order));

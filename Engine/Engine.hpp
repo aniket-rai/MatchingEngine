@@ -12,14 +12,14 @@ class Engine {
     public:
     Engine(std::string ticker) : _ticker(ticker) {};
 
-    void addOrder(Order& order);
-    void addOrder(Order&& order);
+    template <typename T>
+    void addOrder(T&& order);
+    void deleteOrder(T&& orderId);
 
     void getBid();
     void getAsk();
     void getPair();
 
-    void deleteOrder(int orderId);
 
     private:
     std::string _ticker;
