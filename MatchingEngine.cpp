@@ -5,6 +5,7 @@ int main() {
 
     auto order = Order("AAPL", 711.12, 10, OrderType::Bid);
     engine.addOrder(order);
+    engine.addOrder(Order("AAPL", 711.12, 10, OrderType::Bid));
 
     engine.getPair();
 

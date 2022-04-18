@@ -12,6 +12,8 @@ void Engine::addOrder(T&& order) {
         std::cout << "WRONG TICKER inserted into " << this->_ticker << std::endl;
     }
 }
+template void Engine::addOrder<Order>(Order&& order);
+template void Engine::addOrder<Order&>(Order& order);
 
 void Engine::getBid() {
     auto order = _bids.begin()->get();
