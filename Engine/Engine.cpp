@@ -4,9 +4,9 @@ template <typename T>
 void Engine::addOrder(T&& order) {
     if (this->_ticker == order.getTicker()) {
         if (order.getType() == OrderType::Bid) {
-            _bids.push(std::make_unique<Order>(order));
+            _bids.insert(std::make_unique<Order>(order));
         } else {
-            _asks.push(std::make_unique<Order>(order));
+            _asks.insert(std::make_unique<Order>(order));
         }
     } else {
         std::cout << "WRONG TICKER inserted into " << this->_ticker << std::endl;
@@ -14,17 +14,20 @@ void Engine::addOrder(T&& order) {
 }
 
 void Engine::getBid() {
-    std::cout << "Best bid for " << this->_ticker << ":\n" << " - ID: " << _bids.top()->getId() << std::endl << " - Value: " << _bids.top()->getValue() << std::endl;
+    auto order = _bids.begin()->get();
+    std::cout << "Best bid for " << this->_ticker << ":\n" << " - ID: " << order->getId() << std::endl << " - Value: " << order->getValue() << std::endl;
 }
 
 void Engine::getAsk() {
-    std::cout << "Best ask for " << this->_ticker << ":\n" << " - ID: " << _asks.top()->getId() << std::endl << " - Value: " << _asks.top()->getValue() << std::endl;
+    auto order = _asks.begin()->get();
+    std::cout << "Best ask for " << this->_ticker << ":\n" << " - ID: " << order->getId() << std::endl << " - Value: " << order->getValue() << std::endl;
 }
 
 void Engine::getPair() {
-    std::cout << this->_ticker << ": " << _bids.top()->getValue() << "/" << _asks.top()->getValue() << std::endl;
+    std::cout << this->_ticker << ": " << _bids.begin()->get()->getValue() << "/" << _asks.begin()->get()->getValue() << std::endl;
 }
 
-void Engine::deleteOrder(int orderId) {
+template <typename T>
+void Engine::deleteOrder(T&& orderId) {
 
 }

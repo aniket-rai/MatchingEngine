@@ -2,6 +2,7 @@
 
 int Order::nextOrderId = 0;
 
+// Constructor
 Order::Order(const std::string& ticker, const double& value, const int& quantity, const OrderType& type) {
     this->_id = nextOrderId++;
     this->_ticker = ticker;
@@ -10,6 +11,7 @@ Order::Order(const std::string& ticker, const double& value, const int& quantity
     this->_type = type;
 }
 
+// Perfectly forwarded helper
 template <typename T>
 void Order::copyConstructorHelper(T&& order) {
     this->_id = order._id;
@@ -19,10 +21,12 @@ void Order::copyConstructorHelper(T&& order) {
     this->_type = order._type;
 }
 
+// Copy constructor
 Order::Order(Order& order) {
     this->copyConstructorHelper(order);
 }
 
+// Move constructor
 Order::Order(Order&& order) noexcept {
     this->copyConstructorHelper(order);
     order._id = -1;
@@ -30,16 +34,6 @@ Order::Order(Order&& order) noexcept {
     order._value = -1;
     order._quantity = -1;
     order._type = OrderType::None;
-}
-
-std::ostream& operator<<(std::ostream& os, const OrderType& type) {
-    if (type == OrderType::Bid) {
-        os << "Bid";
-    } else {
-        os << "Ask";
-    }
-
-    return os;
 }
 
 std::string Order::getTicker() {

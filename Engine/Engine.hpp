@@ -1,12 +1,11 @@
-#pragma once
 #include <memory>
-#include <queue>
+#include <set>
 
 #include "../Order/Order.hpp"
 
 using order_ptr = std::unique_ptr<Order>;
-using engine_queue_asks = std::priority_queue<order_ptr, std::vector<order_ptr>, std::greater<order_ptr> >;
-using engine_queue_bids = std::priority_queue<order_ptr, std::vector<order_ptr>, std::less<order_ptr> >;
+using engine_queue_asks = std::set<order_ptr, std::greater<order_ptr> >;
+using engine_queue_bids = std::set<order_ptr, std::less<order_ptr> >;
 
 class Engine {
     public:
@@ -14,6 +13,8 @@ class Engine {
 
     template <typename T>
     void addOrder(T&& order);
+
+    template <typename T>
     void deleteOrder(T&& orderId);
 
     void getBid();

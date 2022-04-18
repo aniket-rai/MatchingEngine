@@ -1,4 +1,4 @@
-CXX = g++ -std=c++17
+CXX = g++ -std=c++17 -Wall -O3
 OBJECTS = MatchingEngine.o Engine.o Order.o
 
 MatchingEngine: $(OBJECTS)
